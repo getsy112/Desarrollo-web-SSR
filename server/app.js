@@ -1,23 +1,30 @@
 //Funcion para manejar errores en la aplicaicon
-var createError = require('http-errors');
+//var.createError = require('http-errors');
+import createError from 'http-errors';
 //importa el framework axpress
-var express = require('express');
+import express from 'express';
+//var express = require('express');
 //importa modulos para manejar rutas (path)
-var path = require('path');
+import path from 'node:path';
+//var path = require('path');
 //para kokies
-var cookieParser = require('cookie-parser');
+import cookieParser from 'cookie-parser';
+//var cookieParser = require('cookie-parser');
 //restro para saber que pasa en el servidor Morgan
-var logger = require('morgan');
+import logger from 'morgana';
+//var registrador = require('morgan');
+
 //se importan las rutas de la aplicación
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 //crea la aplicación de express
 var app = express();
 
-// view engine setup
 //configura el motor de vistas
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(_dirname, 'views'));
 app.set('view engine', 'hbs');
+
 
 //configura los midlewaves de la aplicación
 app.use(logger('dev'));
