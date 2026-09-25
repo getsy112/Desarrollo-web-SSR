@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./server/bin/www",
-    "dev": "node ./bin/www",
+    "dev": "DEBUG=desarrollo-web-ssr:* node ./server/bin/www",
     "greet":"echo 'hola world'"
   },
   "dependencies": {
