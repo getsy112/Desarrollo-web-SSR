@@ -20,9 +20,8 @@ const __dirname = dirname(__filename);
 
 // Se importan las rutas de la aplicación
 
-import indexRouter from './routes/index.js';
-
-import usersRouter from './routes/users.js';
+import indexRouter from '#/routes/index.js';
+import usersRouter from '#/routes/users.js';
 
 // Crea la aplicación de Express
 debug(" 🔨Creando Backend")
