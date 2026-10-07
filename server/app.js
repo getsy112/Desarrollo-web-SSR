@@ -17,11 +17,14 @@ const debug = createDebug('desarrollo-web-ssr:app');
 // Crear las variables __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
+//importando el templete engine handlebars
+import hbs from 'hbs';
 // Se importan las rutas de la aplicación
 
 import indexRouter from '#/routes/index.js';
 import usersRouter from '#/routes/users.js';
+//importando el registrador del helper de vite
+import { registerViteHelper } from './lib/vite.js';
 
 // Crea la aplicación de Express
 debug(" 🔨Creando Backend")
@@ -30,12 +33,19 @@ var app = express();
 // Configura el motor de vistas
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+//Registro helper 
+registerViteHelper(hbs);
 
 // Configura los middlewares de la aplicación
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//Archivos esaticos para producción
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'dist')));
+}
 
 // Configuración de archivos estáticos
 debug(" 🔨Creando servidor de archivos estáticos")
