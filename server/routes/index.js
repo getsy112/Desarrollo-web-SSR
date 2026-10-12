@@ -1,9 +1,13 @@
 import express from 'express'
 var router = express.Router();
 
+let Counter = 0;
+const numbers= []
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  Counter ++;
+  numbers.push(Counter);
+  res.render('index', { title: 'Sanchez Martinez Eber', Counter, numbers });
 });
 
 //module.exports = router;
