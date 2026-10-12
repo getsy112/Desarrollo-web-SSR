@@ -10,7 +10,11 @@
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
     "build": "vite build",
     "preview": "npm run build && npm start",
-    "greet": "echo 'hola world'"
+    "greet": "echo 'hola world'",
+    "Lint:all": "npm run Lint:back && npm run Lint:front",
+    "Lint:back": "eslint \"server/**/*\"",
+    "Lint:front": "eslint \"src/**/*\"",
+    "Lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "concurrently": "^10.0.5",
