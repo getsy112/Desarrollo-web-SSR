@@ -21,8 +21,8 @@ const __dirname = dirname(__filename);
 import hbs from 'hbs';
 // Se importan las rutas de la aplicación
 
-import indexRouter from '#/routes/index.js';
-import usersRouter from '#/routes/users.js';
+import indexRouter from '#routes/index.js';
+import usersRouter from '#routes/users.js';
 //importando el registrador del helper de vite
 import { registerViteHelper } from './lib/vite.js';
 
