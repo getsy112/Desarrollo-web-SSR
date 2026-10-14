@@ -3,9 +3,10 @@ import { defineConfig } from 'vite'
 //Importando un admoin de rutas
 import {resolve} from 'node:path'
 // Importa módulos para manejar rutas
-import path, { dirname } from 'node:path';
+import { dirname } from 'node:path';
 // Imports para crear __dirname
 import { fileURLToPath } from 'node:url';
+import tailwindcss from '@tailwindcss/vite'
 
 // Crear las variables __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -14,6 +15,12 @@ const __dirname = dirname(__filename);
 export default defineConfig({
     //directorio raiz de los archivos fuente del front end
     root: 'src', 
+
+    //Agregando a vite el logging de Tailwinds
+    plugins: [
+    tailwindcss()
+],
+
     //configurando un servidor de desarrollo 
     server: {
         port: 5173,
