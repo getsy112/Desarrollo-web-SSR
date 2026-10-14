@@ -62,7 +62,8 @@ app.use(function(req, res, next) {
 });
 
 // Manejador de errores
-app.use(function(err, req, res, next) {
+
+app.use(function(err, req, res, _next) { 
 
   // Variables locales, solo mostrando error en desarrollo
   res.locals.message = err.message;
