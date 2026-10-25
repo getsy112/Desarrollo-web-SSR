@@ -12,11 +12,6 @@ import logger from 'morgan';
 import createDebug from 'debug'; 
 // Imports para crear __dirname
 import { fileURLToPath } from 'node:url';
-// Crear objeto de debug
-const debug = createDebug('desarrollo-web-ssr:app');
-// Crear las variables __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 //importando el templete engine handlebars
 import hbs from 'hbs';
 // Se importan las rutas de la aplicación
@@ -25,10 +20,15 @@ import indexRouter from '#routes/index.js';
 import usersRouter from '#routes/users.js';
 //importando el registrador del helper de vite
 import { registerViteHelper } from './lib/vite.js';
+// Crear objeto de debug
+const debug = createDebug('desarrollo-web-ssr:app');
+// Crear las variables __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Crea la aplicación de Express
 debug(" 🔨Creando Backend")
-var app = express();
+const app = express();
 
 // Configura el motor de vistas
 app.set('views', path.join(__dirname, 'views'));
@@ -57,13 +57,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Catch 404 y enviar al manejador de errores
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // Manejador de errores
 
-app.use(function(err, req, res, _next) { 
+app.use((err, req, res, _next) => { 
 
   // Variables locales, solo mostrando error en desarrollo
   res.locals.message = err.message;

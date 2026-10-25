@@ -1,23 +1,25 @@
 {
-  "name": "desarrollo-web-ssr",
+  "name": "dwssr-2026b",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=production node ./server/bin/www",
-    "dev": "DEBUG=desarrollo-web-ssr:* nodemon ./server/bin/www",
-    "dev:vite": "vite",
+    "dev": "DEBUG=dwssr-2026b:* nodemon ./server/bin/www",
+    "dev:vite": "vite --host",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
     "build": "vite build",
     "preview": "npm run build && npm start",
-    "greet": "echo 'hola world'",
-    "Lint:all": "npm run Lint:back && npm run Lint:front",
-    "Lint:back": "eslint \"server/**/*\"",
-    "Lint:front": "eslint \"src/**/*\"",
-    "Lint:fix": "eslint . --fix"
+    "greet": "echo 'Hola Mundo'",
+    "lint:all": "npm run lint:back && npm run lint:front",
+    "lint:back": "eslint \"server/**/*.js\"",
+    "lint:front": "eslint \"src/**/*.js\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "concurrently": "^10.0.5",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -26,12 +28,15 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.39.5",
     "@tailwindcss/vite": "^4.3.3",
-    "config-prettier": "^0.3.0",
-    "eslint": "^10.12.0",
+    "concurrently": "^10.0.5",
+    "eslint": "^9.39.5",
+    "eslint-config-airbnb-extended": "^3.3.0",
+    "eslint-config-prettier": "^10.1.8",
     "globals": "^17.13.0",
     "nodemon": "^3.1.14",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.2"
   },
@@ -40,3 +45,4 @@
     "#routes/*": "./server/routes/*"
   }
 }
+ 

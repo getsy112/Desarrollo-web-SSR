@@ -1,11 +1,12 @@
 import express from 'express'
-var router = express.Router();
+
+const router = express.Router();
 
 let Counter = 0;
 const numbers= []
 /* GET home page. */
-router.get('/', function(req, res, _next) {
-  Counter ++;
+router.get('/', (req, res, _next) => {
+  Counter += 1;
   numbers.push(Counter);
   res.render('index', { title: 'Sanchez Martinez Eber', Counter, numbers });
 });

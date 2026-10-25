@@ -75,7 +75,5 @@ export function viteAssets() {
  * Registrar el helper de Vite en Handlebars.
  */
 export function registerViteHelper(hbs) {
-    hbs.registerHelper('viteAssets', () => {
-        return new hbs.SafeString(viteAssets());
-    });
+    hbs.registerHelper('viteAssets', () => new hbs.SafeString(viteAssets()));
 }
