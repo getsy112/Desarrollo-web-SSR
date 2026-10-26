@@ -1,9 +1,9 @@
-import express from 'express'
+import express from 'express';
 
 const router = express.Router();
 
 let Counter = 0;
-const numbers= []
+const numbers = [];
 /* GET home page. */
 router.get('/', (req, res, _next) => {
   Counter += 1;

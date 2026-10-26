@@ -25,7 +25,14 @@ export default defineConfig({
     server: {
         port: 5173,
         //Rigidez del puerto
-        strict: true
+        strict: true,
+                host: '0.0.0.0',
+        cors: {
+            origin: [
+                /^https:\/\/.*-3000\.app\.github\.dev$/,
+                'http://localhost:3000'
+            ]
+        }
   
     },
 
