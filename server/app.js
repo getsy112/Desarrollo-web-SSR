@@ -7,7 +7,7 @@ import path, { dirname } from 'node:path';
 // Para cookies
 import cookieParser from 'cookie-parser';
 // Registrador para saber qué pasa en el servidor
-import logger from 'morgan';
+import morgan from 'morgan';
 //Importando biblioteca DEBUG
 import createDebug from 'debug'; 
 // Imports para crear __dirname
@@ -37,7 +37,7 @@ app.set('view engine', 'hbs');
 registerViteHelper(hbs);
 
 // Configura los middlewares de la aplicación
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
