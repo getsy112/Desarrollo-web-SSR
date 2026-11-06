@@ -15,6 +15,8 @@ import { fileURLToPath } from 'node:url';
 //importando el templete engine handlebars
 import hbs from 'hbs';
 // Se importan las rutas de la aplicación
+//importando wiston
+import logger from './lib/winston.js';
 
 import indexRouter from '#routes/index.js';
 import usersRouter from '#routes/users.js';
@@ -36,8 +38,8 @@ app.set('view engine', 'hbs');
 //Registro helper 
 registerViteHelper(hbs);
 
-// Configura los middlewares de la aplicación
-app.use(morgan('dev'));
+// Configur los middlewares de la aplicación
+app.use(morgan('dev', { stream: { write: (msg) => logger.info(msg.trim()) } }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

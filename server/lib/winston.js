@@ -97,12 +97,12 @@ const options = {
 const logger = winston.createLogger({
   transports: [
     new DailyRotateFile(options.dailyRotateFile),
-    new winston.transport.File(options.readableFile),
-    new winston.transport.File(options.errorFile),
-    new winston.transport.Console(options.console),
+    new winston.transports.File(options.readableFile),
+    new winston.transports.File(options.errorFile),
+    new winston.transports.Console(options.console),
   ],
   exeptionHandlers: [
-    new winston.transport.File({
+    new winston.transports.File({
       filename: path.join(logDir, 'exception.log'),
     }),
   ],
