@@ -6,7 +6,8 @@ const indexRouter = express.Router();
 let Counter = 0;
 const numbers = [];
 /* GET home page. */
-indexRouter.get('/', function (req, res, next) {
+// eslint-disable-next-line
+indexRouter.get('/', function (req, res, _next) {
     Counter += 1;
   numbers.push(Counter);
   res.render('index', { title: 'Sanchez Martinez Eber', Counter, numbers });

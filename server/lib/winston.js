@@ -107,7 +107,7 @@ const logger = winston.createLogger({
     }),
   ],
   rejectionHandlers: [
-    new winston.transport.File({
+    new winston.transports.File({
       filename: path.join(logDir, 'rejection.log'),
     }),
   ],
