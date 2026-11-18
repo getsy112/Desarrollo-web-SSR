@@ -43,7 +43,7 @@ const myConsoleFormat = combine(
   timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
   //funcion de imprecion
   printf(
-    (info) => `${info.level} ${info.label} ${info.timestamp} ${info.mensaje}`,
+    (info) => `${info.level} ${info.label} ${info.timestamp} ${info.menssage}`,
   ),
 );
 
@@ -61,7 +61,7 @@ const myFileFormat = combine(
 const options = {
   errorFile: {
     level: 'error',
-    filename: path.join(logDir, 'logs', 'error.log'),
+    filename: path.join(logDir, 'error.log'),
     maxsize: 5242880, //5mb
     maxFiles: 2,
     format: myFileFormat,
@@ -73,7 +73,7 @@ const options = {
   },
   readableFile: {
     level: 'info',
-    filename: path.join(logDir, 'logs', 'readable.log'),
+    filename: path.join(logDir, 'readable.log'),
     maxsize: 5242880, //5mb
     maxFiles: 2,
     format: combine(
@@ -84,7 +84,7 @@ const options = {
   },
   dailyRotateFile: {
     level: 'info',
-    filename: path.join(logDir, 'logs', 'app-%DATE%.log'),
+    filename: path.join(logDir, 'app-%DATE%.log'),
     datePattern: 'YYYY-MM-DD-HH',
     zippedArchive: true,
     maxsize: 5242880, //5mb

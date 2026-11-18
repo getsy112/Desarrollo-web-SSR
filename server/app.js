@@ -70,7 +70,10 @@ app.use((err, req, res, _next) => {
 
   // Variables locales, solo mostrando error en desarrollo
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? {
+    status: err.status || 500, 
+    stack: err.stack,
+  } : {};
 
   // Renderizar página de error
   res.status(err.status || 500);
