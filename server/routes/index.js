@@ -1,57 +1,46 @@
-import express from 'express';
-import logger from '../lib/winston.js';
+import homeRouter from '../modules/home/home.routes.js';
 
-const indexRouter = express.Router();
+export default homeRouter;
 
-let Counter = 0;
-const numbers = [];
-/* GET home page. */
-// eslint-disable-next-line
-indexRouter.get('/', function (req, res, _next) {
-    Counter += 1;
-  numbers.push(Counter);
-  res.render('index', { title: 'Sanchez Martinez Eber', Counter, numbers });
-});
+// //module.exports = router;
 
-//module.exports = router;
+// //rutas para pruevas de logs
+// //acceder a get /rest-log
+// indexRouter.get('/rest-logs', (req, res) => {
+//   logger.error('Esto es un mensaje de ERROR algo falló');
+//   logger.warn('Esto es un mensaje de WARN algo podría estar mal');
+//   logger.info('Esto es un mensaje de INFO operación exitosa');
+//   logger.http('Esto es un mensaje de HTTP petición recibida');
+//   logger.debug('Esto es un mensaje de DEBUG detalle de depuración');
 
-//rutas para pruevas de logs
-//acceder a get /rest-log
-indexRouter.get('/rest-logs', (req, res) => {
-  logger.error('Esto es un mensaje de ERROR algo falló');
-  logger.warn('Esto es un mensaje de WARN algo podría estar mal');
-  logger.info('Esto es un mensaje de INFO operación exitosa');
-  logger.http('Esto es un mensaje de HTTP petición recibida');
-  logger.debug('Esto es un mensaje de DEBUG detalle de depuración');
+//   res.json({
+//     message:
+//       'Logs de prueba generados. Revisa la consola y los archivos en /logs',
+//     files: [
+//       'logs/app-YYYY-MM-DD.log -> DailyRotateFile (info+warn+error en JSON)',
+//       'logs/app-readable.log -> Formato legible (info+warn+error)',
+//       'logs/error.log -> Solo errores',
+//     ],
+//   });
+// });
 
-  res.json({
-    message:
-      'Logs de prueba generados. Revisa la consola y los archivos en /logs',
-    files: [
-      'logs/app-YYYY-MM-DD.log -> DailyRotateFile (info+warn+error en JSON)',
-      'logs/app-readable.log -> Formato legible (info+warn+error)',
-      'logs/error.log -> Solo errores',
-    ],
-  });
-});
+// // Rutas de prueba para exceptions y rejections
+// if (process.env.NODE_ENV !== 'production') {
+//   // Pruebe de una exception
+//   indexRouter.get('/test-exception', (req, res) => {
+//     res.json({ message: 'Excepcion lanzada. Revisa logs/exceptions.log' });
+//     setTimeout(() => {
+//       throw new Error('Excepcion de prueba no capturada');
+//     }, 100);
+//   });
+//   // Pruebe de una rejection
+//   indexRouter.get('/test-rejection', (req, res) => {
+//     res.json({
+//       message: 'Promesa rechazada, revisa archivo logs/rejections.log',
+//     });
+//     // Promesa rechazada sin catch
+//     Promise.reject(new Error('Promesa rechazada de prueba sin catch'));
+//   });
+// }
 
-// Rutas de prueba para exceptions y rejections
-if (process.env.NODE_ENV !== 'production') {
-  // Pruebe de una exception
-  indexRouter.get('/test-exception', (req, res) => {
-    res.json({ message: 'Excepcion lanzada. Revisa logs/exceptions.log' });
-    setTimeout(() => {
-      throw new Error('Excepcion de prueba no capturada');
-    }, 100);
-  });
-  // Pruebe de una rejection
-  indexRouter.get('/test-rejection', (req, res) => {
-    res.json({
-      message: 'Promesa rechazada, revisa archivo logs/rejections.log',
-    });
-    // Promesa rechazada sin catch
-    Promise.reject(new Error('Promesa rechazada de prueba sin catch'));
-  });
-}
-
-export default indexRouter;
+// export default indexRouter;

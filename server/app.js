@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 //import hbs from 'hbs';
 // Se importan las rutas de la aplicación
 //importando wiston
-import indexRouter from '#routes/index.js';
+import homeRouter from '#routes/index.js';
 // eslint-disable-next-line import-x/no-rename-default
 import usersRouter from '#routes/users.js';
 //importando el registrador del helper de vite
@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 // Registramos las rutas
 //debug(" 🛤️ Registrando rutas")
 logger.debug('🖼 Registramos las rutas');
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/users', usersRouter);
 
 // Catch 404 y enviar al manejador de errores
